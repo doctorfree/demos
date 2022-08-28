@@ -13,14 +13,14 @@
     <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
         <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-md md:font-medium">
             <li>
-                <a href="https://finnsoftware.net" class="block py-2 pr-4 pl-3 text-text-primary hover:bg-bg-hover-color md:hover:bg-transparent rounded md:bg-transparent md:text-[rgba(56,139,253,0.75)] md:p-0" aria-current="page">Portfolio</a>
+                <a href="https://ronrecord.com" class="block py-2 pr-4 pl-3 text-text-primary hover:bg-bg-hover-color md:hover:bg-transparent rounded md:bg-transparent md:text-[rgba(56,139,253,0.75)] md:p-0" aria-current="page">Portal</a>
             </li>
             <li>
-                <a href="https://finned.tech" class="block py-2 pr-4 pl-3 text-text-primary hover:bg-bg-hover-color md:hover:bg-transparent rounded md:bg-transparent md:text-[rgba(56,139,253,0.75)] md:p-0" aria-current="page">Business</a>
+                <a href="https://blog.ronrecord.com" class="block py-2 pr-4 pl-3 text-text-primary hover:bg-bg-hover-color md:hover:bg-transparent rounded md:bg-transparent md:text-[rgba(56,139,253,0.75)] md:p-0" aria-current="page">Blog</a>
             </li>
             <li class="order-2 float-right mr-1 text-text-primary">
-                <a href="https://github.com/flancast90" class="block py-2 pr-4 pl-3 text-text-primary hover:bg-bg-hover-color md:hover:bg-transparent rounded md:bg-transparent md:text-[rgba(56,139,253,0.75)] md:p-0" aria-current="page">
-                    Open-Source
+                <a href="https://github.com/doctorfree" class="block py-2 pr-4 pl-3 text-text-primary hover:bg-bg-hover-color md:hover:bg-transparent rounded md:bg-transparent md:text-[rgba(56,139,253,0.75)] md:p-0" aria-current="page">
+                    Open Source
                 </a>
             </li>
         </ul>

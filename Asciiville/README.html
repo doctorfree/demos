@@ -1,0 +1,1854 @@
+<h2 id="asciiville">Asciiville</h2>
+<p>Asciiville is where you go for ASCII Art, animations, and utilities.
+The Asciiville project provides integration and extension of several
+packages as well as providing convenience commands to invoke a variety
+of components used to display ASCII Art, animations, and text based
+utilities to perform common operations in a text-only environment.</p>
+<p>Asciiville includes nearly 1,000 works of ASCII and ANSI Art!</p>
+<h2 id="table-of-contents">Table of contents</h2>
+<ol type="1">
+<li><a href="#overview">Overview</a></li>
+<li><a href="#asciiville-ascii-art-galleries">Asciiville Ascii Art
+Galleries</a></li>
+<li><a href="#asciiville-commands">Asciiville Commands</a></li>
+<li><a href="#quickstart">Quickstart</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#installation">Installation</a>
+<ol type="1">
+<li><a href="#debian-package-installation">Debian package
+installation</a></li>
+<li><a href="#rpm-package-installation">RPM package
+installation</a></li>
+<li><a href="#manual-installation">Manual installation</a></li>
+<li><a href="#bb-aalib-demo">BB AAlib Demo</a></li>
+</ol></li>
+<li><a href="#configuration">Configuration</a>
+<ol type="1">
+<li><a href="#asciiville-configuration">Asciiville
+configuration</a></li>
+<li><a href="#asciiville-utilities-configuration">Asciiville utilities
+configuration</a>
+<ol type="1">
+<li><a href="#newsboat-rss-feed-reader-configuration">Newsboat RSS feed
+reader configuration</a></li>
+<li><a href="#neomutt-email-configuration">NeoMutt email
+configuration</a></li>
+<li><a href="#neomutt-encrypted-passwords">NeoMutt encrypted
+passwords</a></li>
+<li><a href="#neomutt-key-bindings">NeoMutt Key Bindings</a></li>
+<li><a href="#replacing-an-existing-neomutt-configuration">Replacing an
+existing NeoMutt configuration</a></li>
+<li><a href="#mutt-email-configuration">Mutt email
+configuration</a></li>
+<li><a href="#tuir-reddit-client-configuration">Tuir Reddit client
+configuration</a></li>
+</ol></li>
+</ol></li>
+<li><a href="#documentation">Documentation</a>
+<ol type="1">
+<li><a href="#aewan-readme">Aewan README</a></li>
+<li><a href="#btop++-readme">Btop++ README</a></li>
+<li><a href="#cbftp-readme">Cbftp README</a></li>
+<li><a href="#ddgr-readme">Ddgr README</a></li>
+<li><a href="#man-pages">Man Pages</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#example-invocations">Example invocations</a></li>
+</ol></li>
+<li><a href="#adding-an-ascii-art-gallery">Adding an ASCII Art
+Gallery</a>
+<ol type="1">
+<li><a href="#generating-ascii-art">Generating ASCII Art</a></li>
+<li><a href="#adding-and-viewing-art-galleries">Adding and Viewing Art
+Galleries</a></li>
+<li><a href="#ascii-art-tools">ASCII Art Tools</a></li>
+<li><a href="#ascii-art-online">ASCII Art Online</a></li>
+</ol></li>
+<li><a href="#figlet-fonts">Figlet fonts</a></li>
+<li><a href="#build">Build</a></li>
+<li><a href="#removal">Removal</a></li>
+<li><a href="#what-is-ascii">What is ASCII</a>
+<ol type="1">
+<li><a href="#ascii-art-history">ASCII Art History</a></li>
+</ol></li>
+<li><a href="#videos">Videos</a></li>
+<li><a href="#screenshots">Screenshots</a></li>
+<li><a href="#contributing">Contributing</a>
+<ol type="1">
+<li><a href="#testing-and-Issue-Reporting">Testing and Issue
+Reporting</a></li>
+<li><a href="#sponsor-asciiville">Sponsor Asciiville</a></li>
+<li><a href="#contribute-to-development">Contribute to
+Development</a></li>
+</ol></li>
+</ol>
+<h2 id="overview">Overview</h2>
+<p>Asciiville integrations and extensions are aimed at the character
+based terminal and console user. They enable easy to use seamlessly
+integrated control of a variety of ASCII Art, animation, and utilities
+in a lightweight character based environment.</p>
+<p>At the core of Asciiville is the <code>asciiville</code> command
+which acts as a front-end for a variety of terminal commands and
+<code>tmux</code> sessions.</p>
+<p>The <code>asciiville</code> command can be used to display Ascii Art
+either as a slideshow or interactively. For example:</p>
+<pre class="console"><code># Slideshow of Ascii Art in /usr/share/asciiville/art/Art/
+asciiville -V Art
+# Slideshow of Ascii Art in /usr/share/asciiville/art/Vintage/
+asciiville -V Vintage
+# Interactive display of Ascii Art in .../file1 and .../file2
+asciiville file1 file2 ...
+# Slideshow of Ascii Art in file1, file2, and file3
+asciiville -V files file1 file2 file3
+# Slideshow of Ascii Art files listed in /tmp/asciiart.txt
+asciiville -V files=/tmp/asciiart.txt</code></pre>
+<p>Filenames provided to <code>asciiville</code>, either on the command
+line or in a specified file, can be absolute paths to files; relative
+paths to files; or relative paths to files in the Asciiville Ascii Art
+galleries folder. Ascii Art filenames may be provided with or without
+the filename suffix (e.g. <code>Friends/tux.asc</code> or
+<code>Friends/tux.asc.gz</code> or Friends/tux`).</p>
+<p>When viewing Ascii Art in display mode it is possible to enter
+'browse/zoom' mode by entering 'b' or 'z' at the keyboard. In this mode
+the currently displayed art can be zoomed in and out. See the <a
+href="#usage">Usage</a> section below.</p>
+<p>The <code>asciiville</code> command can also be used to invoke
+commands in a variety of ways:</p>
+<ul>
+<li>The lightweight character based system monitor,
+<code>btop</code></li>
+<li>The lightweight character based web browser, <code>w3m</code></li>
+<li>The lightweight character based mail client,
+<code>neomutt</code></li>
+<li>The lightweight character based RSS feed reader,
+<code>newsboat</code></li>
+<li>The lightweight character based FTP client, <code>cbftp</code></li>
+<li>The lightweight character based music player,
+<code>mpcplus</code></li>
+<li>The lightweight character based file manager,
+<code>ranger</code></li>
+<li>The lightweight character based disk usage analyzer,
+<code>gdu</code></li>
+<li>The lightweight character based journal app, <code>jrnl</code></li>
+<li>The lightweight character based terminal UI for Reddit,
+<code>tuir</code></li>
+<li>Featureful ASCII Art display including slideshow and zoom
+capabilities</li>
+<li>Character based ASCII Art and image to ascii conversion utility
+<code>jp2a</code></li>
+<li>One or more terminal emulators running a command</li>
+<li>A tmux session</li>
+<li>A command line web search</li>
+<li>A zoomable map of the world</li>
+<li>Command line character based Twitter client</li>
+<li>Translate words and phrases from and to a wide variety of
+languages</li>
+<li>A network download/upload speed test</li>
+<li>The AAlib BB demo running in a tmux session (Debian based systems
+only)</li>
+<li>The ASCII text-based dungeon game <code>nethack</code> with Extended
+ASCII glyphs</li>
+<li>The <code>cmatrix</code> command that displays the screen from "The
+Matrix"</li>
+<li>ASCII Art creation tool <code>aewan</code></li>
+<li>Display system info</li>
+<li>Display the Phase of the Moon</li>
+<li>Display a weather report</li>
+<li>Display the MusicPlayerPlus or RoonCommandLine interactive
+menus</li>
+<li>Any character based client the user wishes to run</li>
+<li>Several asciimatics animations optionally accompanied by audio</li>
+</ul>
+<p>Without arguments or with the <code>-i</code> argument,
+<code>asciiville</code> presents a set of interactive menus that can be
+used to control its behavior.</p>
+<p>Integration is provided for:</p>
+<ul>
+<li><a href="aewan/README">aewan</a>, Ascii Art creation tool</li>
+<li><a href="btop/README.md">btop</a>, character based system
+monitor</li>
+<li><a href="cbftp/README">cbftp</a>, character based FTP client</li>
+<li><a href="ddgr/README.md">ddgr</a>, command line web search</li>
+<li><a href="https://jrnl.sh/en/stable/">jrnl</a>, a simple command line
+journal application</li>
+<li><a href="https://github.com/lucc/khard">khard</a>, address book for
+the Unix console</li>
+<li><a href="http://w3m.sourceforge.net/">w3m</a>, another character
+based web browser</li>
+<li><a href="https://lynx.invisible-island.net/">lynx</a>, character
+based web browser</li>
+<li><a href="http://www.mutt.org/">mutt</a>, character based email
+client</li>
+<li><a href="http://neomutt.org/">neomutt</a>, character based email
+client</li>
+<li><a href="https://github.com/newsboat/newsboat">newsboat</a>,
+character based RSS feed reader</li>
+<li><a href="https://ranger.github.io/">ranger</a>, character based file
+manager</li>
+<li><a href="https://gitlab.com/ajak/tuir/">tuir</a>, terminal UI for
+Reddit</li>
+<li><a href="https://github.com/dundee/gdu#readme">gdu</a>, character
+based disk usage analyzer</li>
+<li><a href="https://github.com/fedeztk/got">got</a>, text based
+translation tool</li>
+<li><a
+href="https://github.com/doctorfree/MusicPlayerPlus/blob/master/mpcplus/README.md">mpcplus</a>,
+featureful ncurses based Music Player client</li>
+<li><a href="http://mplayerhq.hu/design7/info.html">mplayer</a>, a media
+player</li>
+<li><a
+href="https://github.com/peterbrittain/asciimatics">asciimatics</a> -
+automatically display a variety of character based animation
+effects</li>
+<li><a href="https://asciinema.org/">asciinema</a> - automatically
+create ascii character based video clips</li>
+<li><a href="https://github.com/orakaro/rainbowstream">rainbowstream</a>
+- command line character based Twitter client
+<ul>
+<li>See <a
+href="https://rainbowstream.readthedocs.io/en/latest/#usage">the
+rainbowstream usage manual</a> to get started</li>
+</ul></li>
+<li><a
+href="https://github.com/mame/winner/tree/main/2012/endoh1">endoh1</a>,
+ascii fluid dynamics simulation</li>
+<li><a href="https://github.com/rastapasta/mapscii#readme">mapscii</a>,
+zoomable map of the world</li>
+<li><a href="https://github.com/abishekvashok/cmatrix">cmatrix</a>,
+screen from "The Matrix"</li>
+<li><a href="https://en.wikipedia.org/wiki/NetHack">nethack</a>, ASCII
+text dungeon game</li>
+<li><a
+href="https://en.wikipedia.org/wiki/Space_Invaders">ninvaders</a>, ASCII
+text version of Space Invaders</li>
+<li><a href="https://en.wikipedia.org/wiki/Tetris">tetris</a>, ASCII
+text version of Tetris</li>
+<li><a href="https://github.com/tmux/tmux/wiki">tmux</a>, a terminal
+multiplexer</li>
+<li><a href="https://github.com/chubin/wttr.in">wttr.in</a>,
+console-oriented weather report</li>
+<li>Enhanced key bindings for extended control of terminal windows</li>
+<li>Several terminal emulators
+<ul>
+<li>xfce4-terminal</li>
+<li>gnome-terminal</li>
+<li>tilix</li>
+<li>cool-retro-term</li>
+</ul></li>
+<li><a
+href="https://github.com/doctorfree/MusicPlayerPlus#readme">MusicPlayerPlus</a>,
+character based suite of commands to manage music server and player</li>
+<li><a
+href="https://github.com/doctorfree/RoonCommandLine#readme">RoonCommandLine</a>,
+command line control of the Roon audio system over a local network</li>
+</ul>
+<h2 id="asciiville-ascii-art-galleries">Asciiville Ascii Art
+Galleries</h2>
+<p>The Asciiville project includes many curated Ascii Art galleries.
+These include hundreds of high resolution Ascii Art files created by
+Asciiville author and artist, Dr. Ronald Joe Record. The Asciiville
+package, when installed, provides the following Ascii Art galleries
+located in the default Ascii Art Gallery folder
+<code>/usr/share/asciiville/art/</code>:</p>
+<pre><code>Art - A collection of fine art transformed into Ascii Art
+Doctorwhen - Some of Doctor When&#39;s fantastic art
+Dragonflies - Photos of dragonflies converted to Ascii using Asciiville tools
+Fractals - Images of fractals converted to Ascii using Asciiville tools
+Friends - Photos of friends and family converted to Ascii using Asciiville tools
+Iterated - Images made with iteration converted to Ascii using Asciiville tools
+Lyapunov - Lyapunov fractals converted to Ascii using Asciiville tools
+Nature - Photos of nature converted to Ascii using Asciiville tools
+Owls - Photos of owls converted to Ascii using Asciiville tools
+Space - Photos of space converted to Ascii using Asciiville tools
+Vintage - Traditional Ascii Art
+Wallpapers - Pretty wallpapers converted to Ascii using Asciiville tools
+Waterfalls - Photos of waterfalls converted to Ascii using Asciiville tools</code></pre>
+<p>All of these galleries may be viewed using the menus in the
+<code>asciiville</code> command. Asciiville users can add their own
+custom galleries using the conversion and generation tools provided by
+Asciiville. Custom menus added to the Ascii Art Gallery folder will
+automatically appear in the <code>asciiville</code> menu selections.</p>
+<p>Beginning with Asciiville version 1.4.0 release 2, Asciiville will
+ship with gzip compressed ascii art gallery files. If you wish to
+compress your current pre-1.4.0r2 Asciiville ascii art gallery files
+then download and install <a
+href="https://github.com/doctorfree/Asciiville/blob/main/bin/show_ascii_art">show_ascii_art</a>.
+Install the updated <code>show_ascii_art</code> by copying it to
+<code>/usr/bin/</code> with the command
+<code>sudo cp show_ascii_art /usr/bin</code>.</p>
+<p>When creating custom ascii art galleries for use with Asciiville,
+compression is optional but can be used to reduce the disk size of ascii
+art files. When choosing to compress ascii art files, a gallery's files
+must be compressed with <code>gzip</code>:</p>
+<pre class="console"><code>cd /path/to/gallery
+sudo gzip *.asc</code></pre>
+<h2 id="asciiville-commands">Asciiville Commands</h2>
+<p>Asciiville adds the following commands to your system:</p>
+<ul>
+<li><strong>asciiville</strong> : primary user interface, invokes
+terminal emulators, ascii animations, system monitor, mail client, file
+manager, web browser, and more</li>
+<li><strong>aewan/aecat/aemakeflic</strong> : Ascii Art creation
+tools</li>
+<li><strong>btop</strong> : character based system monitor</li>
+<li><strong>cbftp</strong> : character based FTP client</li>
+<li><strong>ascinit</strong> : one-time initializaton of a user's
+Asciiville configuration</li>
+<li><strong>asciisplash</strong> : fun ascii art screens using
+ASCIImatics animations. Ascii art commands:
+<ul>
+<li><strong>asciiart</strong> : ASCIImatics animated art images</li>
+<li><strong>asciijulia</strong> : ASCIImatics animated zoom on a Julia
+Set</li>
+<li><strong>asciiplasma</strong> : ASCIImatics animated plasma
+graphic</li>
+<li><strong>asciimpplus</strong> : ASCIImatics animated Music Player
+Plus splash screen</li>
+</ul></li>
+<li><strong>datafilecat</strong> : decrypts the content of a cbftp data
+file</li>
+<li><strong>datafilewrite</strong> : encrypts the content of a cbftp
+plain text data file</li>
+<li><strong>ddgr</strong> : command line web search</li>
+<li><strong>gameserver</strong> : multi-player game server</li>
+<li><strong>got</strong> : text based translation tool (only added if
+<code>go</code> is installed)</li>
+<li><strong>jp2a</strong> : image to ascii conversion utility</li>
+<li><strong>make_ascii_art</strong> : generate ascii art from
+images</li>
+<li><strong>mapscii</strong> : character based zoomable map of the
+world</li>
+<li><strong>nethack</strong> : character based dungeon game</li>
+<li><strong>ninvaders</strong> : classic video game</li>
+<li><strong>rainbowstream</strong> : command line Twitter client</li>
+<li><strong>set_xfce_font</strong> : sets an xfce4-terminal window's
+font and font size</li>
+<li><strong>set_xfce_trans</strong> : sets an xfce4-terminal window's
+transparency level</li>
+<li><strong>show_ascii_art</strong> : display ascii art, convert images
+to ascii art</li>
+<li><strong>show_endo</strong> : display a series of ascii fluid
+dynamics simulations</li>
+<li><strong>show_moon</strong> : display the phase of the Moon</li>
+<li><strong>show_weather</strong> : display a weather report</li>
+<li><strong>tdraw</strong> : ASCII drawing tool (only added if
+<code>go</code> is installed)</li>
+<li><strong>termprofset</strong> : set/restore default profile or font
+settings for the Gnome, Xfce4, and Tilix terminals</li>
+<li><strong>tetris</strong> : classic video game</li>
+</ul>
+<p>In addition to the above commands which reside in the Asciiville
+project, several commands may also be installed as dependencies. These
+include:</p>
+<ul>
+<li><strong>asciinema</strong> : ascii animation</li>
+<li><strong>bb</strong> : AAlib demo animation</li>
+<li><strong>cmatrix</strong> : display that screen from "The
+Matrix"</li>
+<li><strong>figlet</strong> : display Figlet Text</li>
+<li><strong>gnupg</strong> : pretty good privacy</li>
+<li><strong>ImageMagick</strong> : the ImageMagick suite of graphics
+command line tools</li>
+<li><strong>jq</strong> : json parsing and manipulation tool</li>
+<li><strong>khard</strong> : contact management for the console</li>
+<li><strong>mplayer</strong> : media player</li>
+<li><strong>neofetch</strong> : system info</li>
+<li><strong>neomutt</strong> : sophisticated text-based EMail and NNTP
+client</li>
+<li><strong>newsboat</strong> : text-based RSS feed reader</li>
+<li><strong>pandoc</strong> : convert and manipulate multiple document
+formats</li>
+<li><strong>ranger</strong> : text-based file management</li>
+<li><strong>speedtest-cli</strong> : text-based command line network
+speed test</li>
+<li><strong>tmux</strong> : embed commands and terminal sessions in a
+terminal multiplexer</li>
+<li><strong>urlscan</strong> : scan for urls in a message</li>
+<li><strong>w3m</strong> : text-based web browser</li>
+</ul>
+<p>Finally, several terminal emulators are installed during Asciiville
+initialization unless initialization is performed with
+<code>ascinit -c</code>:</p>
+<ul>
+<li><strong>cool-retro-term</strong></li>
+<li><strong>gnome-terminal</strong></li>
+<li><strong>tilix</strong> :</li>
+<li><strong>xfce4-terminal</strong></li>
+</ul>
+<p>Additional detail and info can be found in the <a
+href="https://github.com/doctorfree/Asciiville/wiki">Asciiville
+Wiki</a>.</p>
+<h2 id="quickstart">Quickstart</h2>
+<ul>
+<li>Install the latest Debian or RPM format installation package from
+the <a
+href="https://github.com/doctorfree/Asciiville/releases">Asciiville
+Releases</a> page</li>
+<li>Run the <code>ascinit</code> command
+<ul>
+<li>Must be done as a normal user with <code>sudo</code> privilege</li>
+<li>Run <code>ascinit -c</code> to perform a console initialization (no
+graphical utilities)</li>
+</ul></li>
+<li>Initialize the command line Twitter client by invoking the
+<code>rainbowstream</code> command and authorizing the app to access
+your Twitter account</li>
+<li>Execute the <code>asciiville</code> command in interactive menu mode
+by running <code>asciiville -i</code></li>
+<li>See the <a
+href="https://github.com/doctorfree/Asciiville/wiki/asciiville.1">online
+asciiville man page</a> or <code>man asciiville</code> for different
+ways to invoke the <code>asciiville</code> command</li>
+</ul>
+<p>The <code>asciiville</code> command can simply take ascii art
+filenames as arguments and it will display them. The full filename isn't
+even necessary, it will try to figure out what you mean. For example, to
+test whether your Asciiville installation is working, try the
+command:</p>
+<pre class="console"><code>asciiville Waterfalls/wallhaven-r768vq</code></pre>
+<p>This should display a waterfall rendered with characters as ascii
+art.</p>
+<h2 id="requirements">Requirements</h2>
+<p>Asciiville can be installed on Debian or RPM based Linux systems. All
+of the following dependencies/requirements are automatically installed
+if needed when using the Debian or RPM format package install.</p>
+<ul>
+<li>asciinema</li>
+<li>cmatrix</li>
+<li>figlet</li>
+<li>gdu</li>
+<li>gnupg</li>
+<li>imagemagick</li>
+<li>jq</li>
+<li>mplayer</li>
+<li>neofetch</li>
+<li>pandoc</li>
+<li>python3</li>
+<li>ranger</li>
+<li>speedtest-cli</li>
+<li>tmux</li>
+<li>w3m</li>
+</ul>
+<p>After installing Asciiville the <code>ascinit</code> command performs
+a one-time initialization in which several additional packages are
+optionally installed. This post-installation configuration can install
+any or all of several terminal emulators along with character based
+tools. Terminal emulators supported by Asciiville available during
+post-install configuration are:</p>
+<ul>
+<li>cool-retro-term</li>
+<li>gnome-terminal</li>
+<li>tilix</li>
+<li>xfce4-terminal</li>
+</ul>
+<p>Tools installed during post-installation configuration include:</p>
+<ul>
+<li>asciimatics</li>
+<li>got (if the <code>go</code> command is installed)</li>
+<li>jrnl</li>
+<li>mutt</li>
+<li>neomutt</li>
+<li>pipx</li>
+<li>rainbowstream</li>
+<li>tdraw (if the <code>go</code> command is installed)</li>
+</ul>
+<p>Asciiville does not install the <code>go</code> command. In order for
+the <code>got</code> and <code>tdraw</code> commands to be installed
+during post-installation configuration, the <code>go</code> command
+needs to be previously installed. On most Debian based systems
+<code>go</code> can be installed with the command
+<code>sudo apt install golang-go</code>. On RPM based systems
+<code>go</code> can be installed with a command like
+<code>sudo dnf install golang</code>. See <a
+href="https://go.dev/doc/install"><a
+href="https://go.dev/doc/install">https://go.dev/doc/install</a></a> for
+a guide on installing <code>go</code> on your system.</p>
+<h2 id="installation">Installation</h2>
+<p>Asciiville v1.3.0 and later can be installed on Linux systems using
+either the Debian packaging format or the Red Hat Package Manager (RPM).
+Currently tested platforms include Ubuntu Linux 20.04, Fedora Linux 35,
+and Raspbian Linux Bullseye. Installation packages are provided for the
+<code>amd64</code> and <code>armhf</code> architectures in Debian
+packaging format and the <code>x86_64</code> architecture in Red Hat
+package manager (RPM) format.</p>
+<p>See the <a href="#build">Build</a> section below to compile and build
+a package on an Linux platform other than those for which packages are
+provided.</p>
+<h3 id="debian-package-installation">Debian package installation</h3>
+<p>Many Linux distributions, most notably Ubuntu and its derivatives,
+use the Debian packaging system.</p>
+<p>To tell if a Linux system is Debian based it is usually sufficient to
+check for the existence of the file <code>/etc/debian_version</code>
+and/or examine the contents of the file
+<code>/etc/os-release</code>.</p>
+<p>To install on a Debian based Linux system, download the latest Debian
+format package from the <a
+href="https://github.com/doctorfree/Asciiville/releases">Asciiville
+Releases</a>.</p>
+<p>Install the Asciiville package by executing the command</p>
+<pre class="console"><code>sudo apt install ./Asciiville_&lt;version&gt;-&lt;release&gt;.amd64.deb</code></pre>
+<p>or</p>
+<pre class="console"><code>sudo dpkg -i ./Asciiville_&lt;version&gt;-&lt;release&gt;.amd64.deb</code></pre>
+<p>or, on a Raspberry Pi:</p>
+<pre class="console"><code>sudo apt install ./Asciiville_&lt;version&gt;-&lt;release&gt;.armhf.deb</code></pre>
+<p>or</p>
+<pre class="console"><code>sudo dpkg -i ./Asciiville_&lt;version&gt;-&lt;release&gt;.armhf.deb</code></pre>
+<h3 id="rpm-package-installation">RPM package installation</h3>
+<p>Red Hat Linux, SUSE Linux, and their derivatives use the RPM
+packaging format. RPM based Linux distributions include Fedora,
+AlmaLinux, CentOS, openSUSE, OpenMandriva, Mandrake Linux, Red Hat
+Linux, and Oracle Linux.</p>
+<p>To install on an RPM based Linux system, download the latest RPM
+format package from the <a
+href="https://github.com/doctorfree/Asciiville/releases">Asciiville
+Releases</a>.</p>
+<p>Install the Asciiville package by executing the command</p>
+<pre class="console"><code>sudo dnf localinstall ./Asciiville_&lt;version&gt;-&lt;release&gt;.x86_64.rpm</code></pre>
+<p>or</p>
+<pre class="console"><code>sudo yum localinstall ./Asciiville_&lt;version&gt;-&lt;release&gt;.x86_64.rpm</code></pre>
+<h3 id="manual-installation">Manual installation</h3>
+<p>On systems for which neither the Debian or RPM packages will suffice,
+install manually by downloading the <code>Install-bin.sh</code> script
+and either the gzip'd distribution archive or the zip'd distribution
+archive. After downloading the installation script and distribution
+archive, as a user with sudo privilege execute the commands:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 Install-bin.sh</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./Install-bin.sh /path/to/Asciiville_1.4.0-3.<span class="op">&lt;</span>arch<span class="op">&gt;</span>.tgz</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">or</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./Install-bin.sh /path/to/Asciiville_1.4.0-3.<span class="op">&lt;</span>arch<span class="op">&gt;</span>.zip</span></code></pre></div>
+<h3 id="bb-aalib-demo">BB AAlib Demo</h3>
+<p>The BB AAlib Demo is not included in some distributions' default RPM
+repositories. Because of that, it is not included as a dependency in RPM
+installs. However, the <code>asciiville</code> command will utilize the
+BB Demo if it is installed. To activate this feature it may be necessary
+to manually install the <code>bb</code> package. This may entail
+enabling a third-party repository. For example, on Fedora Linux, to
+install <code>bb</code>:</p>
+<ul>
+<li>Add RPM Fusion repositories to your system</li>
+<li>Download latest rpmsphere-release rpm from
+<ul>
+<li><a
+href="https://github.com/rpmsphere/noarch/tree/master/r">https://github.com/rpmsphere/noarch/tree/master/r</a></li>
+</ul></li>
+<li>Install rpmsphere-release rpm:
+<ul>
+<li><code>sudo rpm -Uvh rpmsphere-release*rpm</code></li>
+</ul></li>
+<li>Install bb rpm package:
+<ul>
+<li><code>sudo dnf install bb</code></li>
+</ul></li>
+</ul>
+<p>The BB AAlib Demo is not required. It's just a fun demo.</p>
+<h2 id="configuration">Configuration</h2>
+<h3 id="asciiville-configuration">Asciiville configuration</h3>
+<p>Asciiville preferences are maintained in
+<code>$HOME/.config/asciiville/config</code>. Preferences set in
+interactive menu mode are preserved over invocations of
+<code>asciiville</code>. For example, if a command and terminal were
+selected in interactive menu mode then those selections will
+automatically be applied the next time <code>asciiville</code> is
+run.</p>
+<p>After installing Asciiville, initialize Asciiville configuration and
+install additional features by executing the <code>ascinit</code>
+command as a normal user with <code>sudo</code> privilege. The
+<code>ascinit</code> command will customize the configuration of several
+Asciiville packages and install additional packages.</p>
+<p>If you wish to perform a "console" initialization on a headless
+system or a system on which there is no available X Server, then execute
+the command <code>ascinit -c</code> rather than <code>ascinit</code>. A
+"console" initialization skips the installation of several graphical
+utilities including the terminal emulators that Asciiville uses when in
+desktop mode. In addition, a "console" initialization copies several
+<code>mailcap</code> files tailored for use on a console. These
+<code>mailcap</code> files generally try to display images and video
+using text-based character graphics on a console.</p>
+<pre class="console"><code># Execute the ascinit command:
+ascinit
+# Or, on a console system without the X11 windowing system:
+ascinit -c</code></pre>
+<p>A sample Asciiville configuration file is provided below. In this
+sample configuration the <em>ARTDIR</em> is set to
+<code>/usr/share/asciiville/art</code>, the default Asciiville Ascii Art
+galleries folder. To change the Ascii Art galleries folder, modify this
+setting. For example, to change where <code>asciiville</code> looks for
+Ascii Art galleries, this setting could be modified to:</p>
+<pre><code>ARTDIR=${HOME}/Pictures/AsciiArt</code></pre>
+<p>Asciiville commands would then look in
+<code>$HOME/Pictures/AsciiArt</code> for Ascii Art galleries rather than
+<code>/usr/share/asciiville/art</code>.</p>
+<p>Of particular interest are the <code>art_font_size</code> and
+<code>txt_font_size</code> configuration settings. These control the
+size of the font used to display Ascii Art slideshows and the Figlet
+text in slideshows. Individual display devices differ in resolution.
+Terminal emulator windows used for display of Ascii Art vary in number
+of rows and columns available. The Ascii Art included with Asciiville
+was generated in fairly high resolution. Reducing the
+<code>art_font_size</code> will decrease the amount of screen the art
+display requires while increasing that font size will increase the size
+of the art displayed. Similarly, decreasing or increasing the
+<code>txt_font_size</code> will shrink or enlargen the Figlet text
+displayed. The default settings for these two configuration parameters
+are '4' and '20'. If the art displayed during a slideshow is too small
+or you wish to make it larger, change <code>art_font_size=4</code> to
+<code>art_font_size=6</code> and <code>txt_font_size=20</code> to
+<code>txt_font_size=24</code>. Some experimentation may be required to
+fit the art to your display and terminal emulator window. On a display
+with resolution 2560x1440 pixels, setting <code>art_font_size=8</code>
+and <code>txt_font_size=28</code> provides a larger display of
+Asciiville ascii art that fills most of the screen.</p>
+<p>A sample Asciiville configuration file
+<code>$HOME/.config/asciiville/config</code>:</p>
+<pre><code>ARTDIR=/usr/share/asciiville/art
+MUSEDIR=/usr/share/asciiville/music
+SONG=/home/ronnie/Music/Buckingham_Green.mp3
+ALTSONG=/Epic_Dramatic-Yuriy_Bespalov.wav
+AUDIO=1
+BROWSER=w3m
+COMMAND=newsboat
+FULLSCREEN=
+LOLCAT=&quot;lolcat&quot;
+MTITLE=&quot;RSS Feeds&quot;
+CURRENT=
+GNOME=1
+RETRO=
+TILIX=
+XFCE4=
+use_lolcat=1
+use_lol=YES
+journal=&quot;asciiville&quot;
+style=&quot;fancy&quot;
+art_font_size=8
+txt_font_size=28
+defchars=&#39;   ...,;:clodxkO0KXNWM&#39;
+revchars=&#39;MWNXK0Okxdolc:;,...   &#39;
+revlong=&#39;WMZO0QLCJUYXzcvun1il;:,^.. &#39;
+longchars=&#39; ..^,:;li1nuvczXYUJCLQ0OZMW&#39;</code></pre>
+<h3 id="asciiville-utilities-configuration">Asciiville utilities
+configuration</h3>
+<p>Asciiville creates several default configuration files for utilities
+included in the distribution. Examine these files to further customize
+each program. The default configuration generated when running the
+<code>ascinit</code> command should suffice and may be satisfactory.</p>
+<p>Generated configuration files include:</p>
+<ul>
+<li><code>$HOME/.config/btop/btop.conf</code> : Btop++ system
+monitor</li>
+<li><code>$HOME/.config/got/config.yml</code> : Got text translation
+tool</li>
+<li><code>$HOME/.config/neomutt/</code> : NeoMutt email client startup
+files</li>
+<li><code>$HOME/.config/neofetch/config.conf</code> : NeoFetch system
+info script</li>
+<li><code>$HOME/.config/jrnl/</code> : Journal command <code>jrnl</code>
+configuration file</li>
+<li><code>$HOME/.config/khard/khard.conf</code> : Address book
+<code>khard</code> configuration file</li>
+<li><code>$HOME/.config/ranger/rifle.conf</code> : Rifle, Ranger's file
+opener</li>
+<li><code>$HOME/.config/tuir/</code> : TUIR terminal UI for Reddit
+configuration files</li>
+<li><code>$HOME/.mutt/muttrc</code> : Mutt email client</li>
+<li><code>$HOME/.newsboat/</code> : Newsboat RSS feed reader
+configuration files</li>
+<li><code>$HOME/.rainbow_config.json</code> : Rainbowstream Twitter
+client</li>
+<li><code>$HOME/.tmux.conf</code> : Tmux terminal multiplexer</li>
+<li><code>$HOME/.w3m/</code> : W3M web browser custom configuration
+<ul>
+<li>W3M web browser configured to act as a Markdown pager</li>
+<li>W3M configuration enables support for many MIME types and external
+apps</li>
+</ul></li>
+</ul>
+<p>These override or extend the settings in the utilities' global
+configuration files, typically installed in <code>/etc/</code>. For
+example, the global configuration for the Ranger File Manager can be
+found in <code>/etc/ranger/config/</code>. The W3M web browser is
+configured in <code>/etc/w3m/</code>, and the NeoMutt global config is
+<code>/etc/neomuttrc</code>.</p>
+<p>After installing Asciiville and running the <code>ascinit</code>
+command, initialize the the command line Twitter client by invoking the
+<code>rainbowstream</code> command and authorizing the app to access
+your Twitter account.</p>
+<h4 id="newsboat-rss-feed-reader-configuration">Newsboat RSS feed reader
+configuration</h4>
+<p>The <a href="https://github.com/newsboat/newsboat">Newsboat</a>
+character based RSS feed reader is a quick and easy way to view
+configured RSSS feeds. Newsboat is very lightweight and displays its
+list of configured feeds and articles almost immediately. It's an
+excellent way to get a quick glimpse of News, Articles, Blog posts,
+Twitter feeds, and more. Asciiville provides a default initial
+configuration for Newsboat that includes RSS feeds for News sources,
+YouTube channels, Reddit subreddits, Twitter feeds, Github repositories,
+Blogs, and online Comics. To reconfigure Newsboat with the RSS feeds you
+wish to follow, edit the file <code>$HOME/.newsboat/urls</code>.</p>
+<p>Asciiville also provides a default Newsboat reader configuration with
+key bindings, formatting, and other Newsboat view and usage parameters.
+To adjust the way Newsboat displays feeds, formats output, and responds
+to input, edit the file <code>$HOME/.newsboat/config</code>.</p>
+<h4 id="neomutt-email-configuration">NeoMutt email configuration</h4>
+<p>The <a href="https://neomutt.org/">NeoMutt</a> email client is an
+improved Mutt client. Asciiville installs NeoMutt as a dependency and
+provides support for configuring and launching NeoMutt. Setup for
+NeoMutt is similar to setup for Mutt.</p>
+<p>The <code>ascinit</code> command creates an initial NeoMutt
+configuration in <code>$HOME/.config/neomutt/</code>. In order to use
+the NeoMutt email client it will be necessary to configure
+<code>$HOME/.config/neomutt/accounts/*</code> with your name, email
+address, and credentials. The default NeoMutt user configuration files
+configure NeoMutt for use with GMail. This can be modified by editing
+the accounts configured in
+<code>$HOME/.config/neomutt/neomuttrc</code>.</p>
+<p>Asciiville provides three preconfigured NeoMutt email accounts -
+<code>$HOME/.config/neomutt/accounts/gmail</code>,
+<code>$HOME/.config/neomutt/accounts/main</code>, and
+<code>$HOME/.config/neomutt/accounts/cruzio</code>. The
+<code>accounts/gmail</code> NeoMutt account is enabled by default while
+the other two are disabled by default. The <code>main</code> account is
+a vanilla account with a basic configuration while the
+<code>gmail</code> and <code>cruzio</code> accounts are highly curated
+and take advantage of some advanced NeoMutt features. The
+<code>gmail</code> account is tailored for use with GMail and the
+<code>cruzio</code> account is tailored for use with Cruzio, an
+independent internet service provider in Santa Cruz, California. Cruzio
+was founded in 1989 by Chris and Peggy and has remained 100% locally
+owned and staffed. The citizens of Asciiville encourage the patronage of
+independent locally owned internet service providers.</p>
+<p>In addition to the three preconfigured NeoMutt email accounts,
+Asciiville also provides a preconfigured NNTP account. One of NeoMutt's
+advanced features is the ability to act as an NNTP client, enabling it
+to read and post to Usenet newsgroups. The NeoMutt account
+<code>$HOME/.config/neomutt/accounts/nntp</code>, when enabled in
+<code>neomuttrc</code>, can be used to connect to a Usenet Newsgroup
+server. The <code>nntp</code> account uses
+<code>news.eternal-september.org</code> as the default NNTP server. In
+order to access this Usenet server a free registration at <a
+href="https://www.eternal-september.org/RegisterNewsAccount.php">https://www.eternal-september.org/RegisterNewsAccount.php</a>
+is required.</p>
+<p>Comments in <code>$HOME/.config/neomutt/accounts/gmail</code> provide
+pointers to configuring your credentials with GMail. If Google 2FA
+Authentication is enabled in your Google account, create an App password
+for NeoMutt. See <a
+href="https://security.google.com/settings/security/apppasswords"><a
+href="https://security.google.com/settings/security/apppasswords">https://security.google.com/settings/security/apppasswords</a></a></p>
+<p>NeoMutt can use the output of external commands to set a
+configuration value. Storing a password in a configuration file is
+generally a bad idea. Passwords and other sensitive material can be
+stored elsewhere and a command used to retrieve and set them in the
+configuration file. Storing a plain text password in a file and reading
+that file from the NeoMutt configuration is better than placing the
+password directly in the configuration file. But it is still plain text
+in a file somewhere. A more secure manner of storing passwords can be
+implemented using encryption with utilities like PGP or GPG.</p>
+<h4 id="neomutt-encrypted-passwords">NeoMutt encrypted passwords</h4>
+<p>To use an encrypted password with NeoMutt, follow the guide at: <a
+href="https://www.xmodulo.com/mutt-email-client-encrypted-passwords.html"><a
+href="https://www.xmodulo.com/mutt-email-client-encrypted-passwords.html">https://www.xmodulo.com/mutt-email-client-encrypted-passwords.html</a></a>
+The ArchLinux wiki has a good article on configuring GPG to
+encrypt/decrypt passwords and email. See <a
+href="https://wiki.archlinux.org/title/GnuPG"><a
+href="https://wiki.archlinux.org/title/GnuPG">https://wiki.archlinux.org/title/GnuPG</a></a></p>
+<p>For example, if you have encrypted your Google NeoMutt App password
+in the file <code>~/.neomutt/gmail.gpg</code> then the following can be
+used for GMail authentication in
+<code>$HOME/.config/neomutt/accounts/gmail</code></p>
+<p>Create a GPG key pair</p>
+<pre class="console"><code>gpg --gen-key</code></pre>
+<p>Create a file containing the encrypted password:</p>
+<pre class="console"><code>echo &quot;your_gmail_app_password&quot; &gt; ~/.config/neomutt/gmail
+gpg -r youremail@gmail.com -e ~/.config/neomutt/gmail
+rm -f ~/.config/neomutt/gmail
+chmod 600 ~/.config/neomutt/gmail.gpg</code></pre>
+<p>Configure NeoMutt authentication in
+<code>$HOME/.config/neomutt/accounts/gmail</code></p>
+<pre class="console"><code>set imap_pass=&quot;`gpg --batch -q --decrypt ~/.neomutt/gmail.gpg`&quot;</code></pre>
+<p>The first time <code>neomutt</code> is executed it will prompt you
+for the passphrase used to create the GPG key pair. If you check the box
+to use the GPG passphrase manager then subsequent invocations of NeoMutt
+will not prompt for the passphrase. This assumes the
+<code>gpg-agent</code> has been installed and configured. Many modern
+Linux distributions do this by default.</p>
+<p>Creating and using encrypted passwords is strongly recommended.
+That's why I spent the time to write this section of the README. A
+similar procedure can be used with Mutt.</p>
+<p>To transfer a previously generated GnuPG key pair from another
+system, see <a
+href="https://gist.github.com/angela-d/8b27670bac26e4bf7c431715fef5cc51"><a
+href="https://gist.github.com/angela-d/8b27670bac26e4bf7c431715fef5cc51">https://gist.github.com/angela-d/8b27670bac26e4bf7c431715fef5cc51</a></a></p>
+<h4 id="neomutt-key-bindings">NeoMutt Key Bindings</h4>
+<p>The Asciiville NeoMutt configuration includes some custom key
+bindings to ease NeoMutt navigation. These are documented in
+<code>/usr/share/asciiville/neomutt/cheatsheet.md</code>.</p>
+<p>The primary differences between the Asciiville NeoMutt key bindings
+and the default are as follows:</p>
+<ul>
+<li>Vim keybinds. <code>k</code> and <code>j</code> to go up and down,
+and <code>l</code> and <code>h</code> to move forwards and back
+pages</li>
+<li>Open the sidebar with <code>B</code>. <code>Ctrl+j</code> and
+<code>Ctrl+k</code> to navigate, <code>Ctrl+o</code> to open
+selection</li>
+<li><code>A</code> will attempt to create a new contact with khard</li>
+<li><code>F2</code>, <code>F3</code>, and <code>F4</code> are used to
+switch between three mailboxes</li>
+</ul>
+<p>The customized Asciiville NeoMutt key bindings are as follows:</p>
+<h5 id="index">Index</h5>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Keybind</th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="odd">
+<td>Go to last entry</td>
+<td><code>G</code></td>
+</tr>
+<tr class="even">
+<td>Go to first entry</td>
+<td><code>gg</code></td>
+</tr>
+<tr class="odd">
+<td>Page down</td>
+<td><code>d</code></td>
+</tr>
+<tr class="even">
+<td>Page up</td>
+<td><code>u</code></td>
+</tr>
+<tr class="odd">
+<td>Delete message</td>
+<td><code>D</code></td>
+</tr>
+<tr class="even">
+<td>Delete thread</td>
+<td><code>Ctrl+d</code></td>
+</tr>
+<tr class="odd">
+<td>Mark thread read</td>
+<td><code>Ctrl+r</code></td>
+</tr>
+<tr class="even">
+<td>Undelete message</td>
+<td><code>U</code></td>
+</tr>
+<tr class="odd">
+<td>Limit/Filter</td>
+<td><code>L</code></td>
+</tr>
+<tr class="even">
+<td>Open message</td>
+<td><code>l, Enter</code></td>
+</tr>
+<tr class="odd">
+<td>Group reply</td>
+<td><code>R</code></td>
+</tr>
+<tr class="even">
+<td>Reply</td>
+<td><code>r</code></td>
+</tr>
+<tr class="odd">
+<td>Forward message</td>
+<td><code>f</code></td>
+</tr>
+<tr class="even">
+<td>New message</td>
+<td><code>m</code></td>
+</tr>
+<tr class="odd">
+<td>View attachments</td>
+<td><code>v</code></td>
+</tr>
+<tr class="even">
+<td>Compose to Sender</td>
+<td><code>@</code></td>
+</tr>
+<tr class="odd">
+<td>Resend message</td>
+<td><code>Esc+e</code></td>
+</tr>
+<tr class="even">
+<td>Save message (to file)</td>
+<td><code>s</code></td>
+</tr>
+<tr class="odd">
+<td>Toggle collapse thread</td>
+<td><code>Space, Esc+v</code></td>
+</tr>
+<tr class="even">
+<td>Toggle collapse all threads</td>
+<td><code>Esc+V</code></td>
+</tr>
+<tr class="odd">
+<td>Add contact to Khard</td>
+<td><code>A</code></td>
+</tr>
+<tr class="even">
+<td>Jump to parent message</td>
+<td><code>P</code></td>
+</tr>
+<tr class="odd">
+<td>Email PGP public key</td>
+<td><code>Esc+k</code></td>
+</tr>
+</tbody>
+</table>
+
+<h5 id="pager">Pager</h5>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Keybind</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bottom of page</td>
+<td><code>G</code></td>
+</tr>
+<tr class="even">
+<td>Top of page</td>
+<td><code>gg</code></td>
+</tr>
+<tr class="odd">
+<td>Next line</td>
+<td><code>j</code></td>
+</tr>
+<tr class="even">
+<td>Previous line</td>
+<td><code>k</code></td>
+</tr>
+<tr class="odd">
+<td>View attachments</td>
+<td><code>l</code></td>
+</tr>
+<tr class="even">
+<td>Page down</td>
+<td><code>d</code></td>
+</tr>
+<tr class="odd">
+<td>Page up</td>
+<td><code>u</code></td>
+</tr>
+<tr class="even">
+<td>Group reply</td>
+<td><code>R</code>,<code>g</code></td>
+</tr>
+<tr class="odd">
+<td>Reply</td>
+<td><code>r</code></td>
+</tr>
+<tr class="even">
+<td>Compose to Sender</td>
+<td><code>@</code></td>
+</tr>
+<tr class="odd">
+<td>Delete thread</td>
+<td><code>Ctrl+d</code></td>
+</tr>
+<tr class="even">
+<td>Mark thread read</td>
+<td><code>Ctrl+r</code></td>
+</tr>
+<tr class="odd">
+<td>Mark thread new</td>
+<td><code>N</code></td>
+</tr>
+</tbody>
+</table>
+
+<h5 id="sidebar">Sidebar</h5>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Keybind</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Show sidebar</td>
+<td><code>B</code></td>
+</tr>
+<tr class="even">
+<td>Up</td>
+<td><code>Ctrl+k</code></td>
+</tr>
+<tr class="odd">
+<td>Down</td>
+<td><code>Ctrl+j</code></td>
+</tr>
+<tr class="even">
+<td>Open</td>
+<td><code>Ctrl+o</code></td>
+</tr>
+<tr class="odd">
+<td>Open next new</td>
+<td><code>Ctrl+n</code></td>
+</tr>
+<tr class="even">
+<td>Open previous new</td>
+<td><code>Ctrl+p</code></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="replacing-an-existing-neomutt-configuration">Replacing an
+existing NeoMutt configuration</h4>
+<p>Asciiville <code>ascinit</code> skips NeoMutt initialization and
+configuration if it detects an existing
+<code>$HOME/.config/neomutt/</code> folder. If you have already
+configured NeoMutt then <code>ascinit</code> does not touch the existing
+configuration. However, you may want to examine the NeoMutt
+configuration provided in Asciiville by viewing the files in
+<code>/usr/share/asciiville/neomutt/</code>. If you want to use the
+Asciiville NeoMutt setup files rather than your previously configured
+setup, move the existing <code>$HOME/.config/neomutt/</code> folder
+aside and rerun <code>ascinit</code>.</p>
+<h4 id="mutt-email-configuration">Mutt email configuration</h4>
+<p>Alternatively, you may prefer using the older but still maintained
+and robust <a href="https://www.mutt.org/">Mutt</a> email client.
+Asciiville checks to see if Mutt is installed and, if so, provides
+support for launching it as well as NeoMutt. Mutt and NeoMutt can
+coexist peacefully.</p>
+<p>Mutt is not installed as a dependency during the Asciiville
+installation. If you wish to use the Mutt integration in Asciiville,
+Mutt must be installed. A Mutt installation and Asciiville Mutt
+configuration can be accomplished by running the command
+<code>ascinit -m</code> or <code>ascinit -M</code> for both Mutt and
+NeoMutt. If no text based email client is desired, then configuration
+for both Mutt and NeoMutt can be skipped by executing
+<code>ascinit -N</code> during initialization.</p>
+<p>In order to use the Mutt email client it will be necessary to
+configure <code>$HOME/.mutt/.muttrc</code> with your email address,
+name, and credentials. Comments in <code>$HOME/.mutt/.muttrc</code>
+provide pointers to configuring your credentials with GMail. If Google
+2FA Authentication is enabled in your Google account, create an App
+password for NeoMutt. See <a
+href="https://security.google.com/settings/security/apppasswords"><a
+href="https://security.google.com/settings/security/apppasswords">https://security.google.com/settings/security/apppasswords</a></a></p>
+<p>Asciiville <code>ascinit</code> Mutt initialization does not
+overwrite any previously existing Mutt configuration files in
+<code>$HOME/.mutt/</code>. However, you may want to examine the Mutt
+configuration provided in Asciiville by viewing the files in
+<code>/usr/share/asciiville/mutt/</code>. If you want to use the
+Asciiville Mutt setup files rather than your previously configured
+setup, move the existing <code>$HOME/.mutt/</code> folder aside and
+rerun <code>ascinit</code>.</p>
+<p>There are many Mutt configuration guides on the Internet. ArchLinux
+has a good guide at <a href="https://wiki.archlinux.org/title/Mutt"><a
+href="https://wiki.archlinux.org/title/Mutt">https://wiki.archlinux.org/title/Mutt</a></a>.</p>
+<h4 id="tuir-reddit-client-configuration">Tuir Reddit client
+configuration</h4>
+<p>The <code>tuir</code> command is a text based user interface for
+Reddit. A <code>tuir</code> configuration is setup as part of the
+<code>ascinit</code> Asciiville initialization and this configuration
+should work well for most users. However, if you wish to login to your
+Reddit account using <code>tuir</code> then you will first need to
+generate an OAuth client id and secret with Reddit. This process is
+described at:</p>
+<p><a href="https://github.com/reddit-archive/reddit/wiki/oauth2"><a
+href="https://github.com/reddit-archive/reddit/wiki/oauth2">https://github.com/reddit-archive/reddit/wiki/oauth2</a></a></p>
+<p>First visit <a href="https://www.reddit.com/prefs/apps/"><a
+href="https://www.reddit.com/prefs/apps/">https://www.reddit.com/prefs/apps/</a></a>
+and click "Create another app ..." at the bottom of the page. You can
+use whatever you like for the Name of the app, I used 'tuir'. Make sure
+that the 'redirect uri' is <code>http://127.0.0.1:65000/</code> or
+whatever you have set it to in <code>$HOME/.config/tuir/tuir.cfg</code>
+(most configurations will be unchanged and can use
+<code>http://127.0.0.1:65000/</code>). I left the 'about url' blank.</p>
+<p>After you have completed the process of creating a new app in Reddit,
+update your <code>$HOME/.config/tuir/tuir.cfg</code> with your new
+<code>oauth_client_id</code> and <code>oauth_client_secret</code>. These
+can be found back up towards the top of the newly created app page.</p>
+<p>After updating <code>tuir.cfg</code> with the new id and secret, open
+<code>tuir</code> and attempt to login the Reddit by pressing the 'u'
+key while in tuir. This should open your default browser and take you to
+Reddit where you can give your new app authorization, leave the browser,
+and go back to <code>tuir</code> where you should now be logged in.</p>
+<h2 id="documentation">Documentation</h2>
+<p><strong>[NEW:]</strong> Asciiville documentation is now available on
+<a href="https://asciiville.readthedocs.io/en/latest/index.html">Read
+the Docs</a></p>
+<p>All Asciiville commands have manual pages. Execute
+<code>man &lt;command-name&gt;</code> to view the manual page for a
+command. The <code>asciiville</code> frontend is the primary user
+interface for Asciiville and the manual page for <code>asciiville</code>
+can be viewed with the command <code>man asciiville</code>. Most
+commands also have help/usage messages that can be viewed with the
+<strong>-u</strong> argument option, e.g.
+<code>asciiville -u</code>.</p>
+<p>In interactive mode, the <code>asciiville</code> command presents a
+series of menus from which commands can be executed. Each of these menus
+provides an entry point for a 'Help' menu that can be displayed by
+typing 'h' at the prompt. The Asciiville Help menu contains a large
+number of menu entries providing access to manuals and man pages
+describing usage of the Asciiville components. Run the
+<code>asciiville</code> command with no arguments or the <code>-i</code>
+argument to bring up the interactive menu interface.</p>
+<h3 id="aewan-readme">Aewan README</h3>
+<ul>
+<li><a href="aewan/README">aewan</a>, Introduction to the Aewan ascii
+art creation tool</li>
+</ul>
+<h3 id="btop-readme">Btop++ README</h3>
+<ul>
+<li><a href="btop/README.md"><strong>btop/README.md</strong></a> -
+Introduction to the btop system monitor</li>
+</ul>
+<h3 id="cbftp-readme">Cbftp README</h3>
+<ul>
+<li><a href="cbftp/README"><strong>cbftp/README</strong></a> -
+Introduction to the cbftp FTP client</li>
+<li><a href="https://youtu.be/dOIwg9nMF10"><strong>Video on
+Cbftp</strong></a> - Video introduction to the cbftp FTP client</li>
+</ul>
+<h3 id="ddgr-readme">Ddgr README</h3>
+<ul>
+<li><a href="ddgr/README.md">ddgr</a>, Introduction to the command line
+web search utility</li>
+</ul>
+<h3 id="man-pages">Man Pages</h3>
+<ul>
+<li><a href="markdown/asciiville.1.md"><strong>asciiville</strong></a> :
+Primary Asciiville user interface</li>
+<li><a href="markdown/asciiart.1.md"><strong>asciiart</strong></a> :
+asciimatics animation of art images</li>
+<li><a href="markdown/asciijulia.1.md"><strong>asciijulia</strong></a> :
+asciimatics animation of a Julia Set</li>
+<li><a href="markdown/asciimpplus.1.md"><strong>asciimpplus</strong></a>
+: asciimatics animation of Asciiville intro</li>
+<li><a href="markdown/asciiplasma.1.md"><strong>asciiplasma</strong></a>
+: asciimatics animation with Plasma effect</li>
+<li><a
+href="markdown/asciisplash-tmux.1.md"><strong>asciisplash-tmux</strong></a>
+: Asciiville asciimatics animations in a tmux session</li>
+<li><a href="markdown/asciisplash.1.md"><strong>asciisplash</strong></a>
+: Asciiville asciimatics animations</li>
+<li><a href="markdown/ascinit.1.md"><strong>ascinit</strong></a> :
+Asciiville initialization</li>
+<li><a href="markdown/btop.1.md"><strong>btop</strong></a> : Asciiville
+system monitor</li>
+<li><a href="markdown/cbftp.1.md"><strong>cbftp</strong></a> :
+Asciiville FTP client</li>
+<li><a
+href="markdown/show_ascii_art.1.md"><strong>show_ascii_art</strong></a>
+: Display ascii art, convert images to ascii art</li>
+<li><a href="markdown/show_moon.1.md"><strong>show_moon</strong></a> :
+Display the phase of the Moon</li>
+<li><a
+href="markdown/show_weather.1.md"><strong>show_weather</strong></a> :
+Display a weather report</li>
+<li><a href="markdown/termprofset.1.md"><strong>termprofset</strong></a>
+: Manipulate default terminal profile or font settings</li>
+</ul>
+<h3 id="usage">Usage</h3>
+<p>Many of the Asciiville features and facilities work perfectly well
+with both fixed and variable width fonts. However, Ascii Art and
+graphics are best viewed using a Monospaced or "fixed-width" font such
+as "Courier", "Lucida Console", "Monaco", "Consolas", "Inconsolata", or
+"Monospace Regular". Variable width fonts can interfere with the
+intended display of Ascii Art.</p>
+<p>The Asciiville package creates an "Asciiville" profile in the
+<code>gnome-terminal</code> and <code>tilix</code> terminal emulators to
+configure use of a Monospaced font as well as invoking
+<code>xfce4-terminal</code> with a <em>--font</em> option specifying a
+Monospaced font. The <code>asciiville</code> command attempts to ensure
+the use of a Monospaced font where it is possible but options do exist
+for the Asciiville user to use whatever the current terminal window
+might be. In this case, "Use Current Terminal", the Asciiville user may
+need to manually configure the terminal window for Monospaced font
+use.</p>
+<p>When viewing Ascii Art in non-slideshow mode, for example if
+<code>asciiville</code> were invoked with ascii art filenames as
+arguments, the user can enter 'z' or 'b' followed by 'Return' to enter
+"zoom/browse" mode. In this mode the user can zoom in and out of the
+ascii art. Use the following key presses to navigate in zoom/browse
+mode:</p>
+<ul>
+<li>'i' zoom in</li>
+<li>'j' zoom in more</li>
+<li>'n' zoom in even more</li>
+<li>'o' zoom out</li>
+<li>'k' zoom out more</li>
+<li>'m' zoom out even more</li>
+<li>'r' restore to original</li>
+<li>'h' display a help message</li>
+<li>'q' or 'x' to exit zoom/browse mode</li>
+</ul>
+<p>In addition, in non-slideshow mode the user can enter 's' or 'S'
+followed by 'Return' to enter info "slideshow" mode. In slideshow mode
+the ascii art is displayed for a few seconds then the next file is
+displayed. No user interaction is possible during slideshow mode other
+than 'Ctrl-c' to exit.</p>
+<h4 id="usage-message-for-the-asciiville-command">Usage message for the
+<code>asciiville</code> command</h4>
+<p>The usage message for <code>asciiville</code> provides a brief
+summary of the command line options:</p>
+<pre><code>Usage: asciiville [-a] [-A] [-b] [-c command] [-C] [-d] [-D delay]
+    [-E len] [-f] [-F] [-g] [-i] [-I] [-jJ] [-k] [-l] [-L level]
+    [-m] [-M] [-N] [-n num] [-p] [-P script] [-r] [-R] [-s song]
+    [-S] [-t] [-T] [-U] [-v] [-V show] [-w] [-W] [-x] [-X] [-y]
+    [-Y] [-z] [-Z] [-u] [file1 [file2 ...]]
+
+Terminal/Command options:
+    -c &#39;command&#39; indicates use &#39;command&#39;
+        If &#39;command&#39; is keyword &#39;endo&#39; then display ascii fluid simulation
+        If &#39;command&#39; is keyword &#39;maps&#39; then display a map using mapscii
+        If &#39;command&#39; is keyword &#39;moon&#39; then display the phase of the Moon
+        If &#39;command&#39; is keyword &#39;news&#39; then display RSS news feeds
+        If &#39;command&#39; is keyword &#39;reddit&#39; then display Reddit terminal UI
+        If &#39;command&#39; is keyword &#39;search&#39; then a web search is performed
+        If &#39;command&#39; is keyword &#39;speed&#39; then a speed test is performed
+        If &#39;command&#39; is keyword &#39;translate&#39; then the translation tool is run
+        If &#39;command&#39; is keyword &#39;twitter&#39; then a Twitter client is run
+        If &#39;command&#39; is keyword &#39;weather&#39; then display a weather report
+        Otherwise, &#39;command&#39; will be executed in a terminal window
+    -d indicates use disk usage analyzer as default command
+    -f indicates use cbftp/ncftp as the default command
+    -F indicates fullscreen display
+    -g indicates use gnome terminal emulator
+    -i indicates start asciiville in interactive mode
+    -I indicates display system info
+    -l indicates use lynx web browser as the default command
+    -L &#39;level&#39; lolcat coloring level
+       &#39;level&#39; can be &#39;0&#39; (off), &#39;1&#39; (on), or &#39;2&#39; (animate)
+    -r indicates use retro terminal emulator
+    -t indicates use tilix terminal emulator
+    -U indicates set command to Ninvaders
+    -w indicates use w3m web browser as the default command
+    -W indicates use cmatrix as the default command
+    -x indicates use xfce4 terminal emulator
+    -X indicates run commands in current terminal window
+    -y indicates use ranger file manager as the default command
+    -Y indicates use NetHack dungeon game as the default command
+    -z indicates use neomutt email client as the default command
+Slideshow/ASCIImatics animation options:
+    -A indicates use Asciiville scenes in ASCIImatics display
+    -a indicates play audio during display
+    -b indicates use backup audio during display
+    -C indicates cycle slideshow endlessly (Ctrl-c to exit show)
+    -D &#39;delay&#39; specifies delay, in seconds, between art display (default 5)
+    -E &#39;len&#39; indicates random slideshow of length &#39;len&#39; (0 infinite)
+    -j indicates use Julia Set scenes in ASCIImatics display
+    -J indicates Julia Set with several runs using different parameters
+    -m indicates use MusicPlayerPlus scenes in ASCIImatics display
+    -M indicates use MusicPlayerPlus MPD client as default command
+    -n num specifies the number of times to cycle ASCIImatics scenes
+    -N indicates use alternate comments in Plasma ASCIImatics scenes
+    -p indicates use Plasma scenes in ASCIImatics display
+    -P script specifies the ASCIImatics script to run
+    -s &#39;song&#39; specifies a song to accompany an ASCIImatics animation
+       &#39;song&#39; can be the full pathname to an audio file or a relative
+       pathname to an audio file in the MPD music library or ~/Music/
+    -S indicates display ASCIImatics splash animation
+    -V &#39;show&#39; displays an ascii art slide show
+       &#39;show&#39; can be one of &#39;Art&#39;, &#39;Doctorwhen&#39;, &#39;Dragonflies&#39;,
+       &#39;Fractals&#39;, &#39;Friends&#39;, &#39;Iterated&#39;, &#39;Lyapunov&#39;, &#39;Nature&#39;,
+       &#39;Owls&#39;, &#39;Space&#39;, &#39;Vintage&#39;, &#39;Wallpapers&#39;, &#39;Waterfalls&#39;,
+       the name of a custom ascii art folder, the slideshow keyword
+       &#39;files&#39; which indicates display a slideshow using the ascii
+       art files provided on the command line, or the slideshow
+       argument &#39;files=/path/to/file&#39; which indicates read the list
+       of slideshow files from the file &#39;/path/to/file&#39;
+    -Z indicates do not play audio during slideshow/animation
+
+General options:
+    -k indicates kill Asciiville tmux sessions and ASCIImatics scripts
+    -R indicates record tmux session with asciinema
+    -T indicates use a tmux session for either ASCIImatics or command
+    -v displays the Asciiville version and exits
+    -u displays this usage message and exits
+
+Remaining arguments are filenames of ascii art to display
+    Ascii art filenames can be relative to the Ascii Art Gallery folder
+    and need not specify the filename suffix. For example:
+        asciiville -L 2 Friends/tux Doctorwhen/Capitola_Village_Vivid
+
+Invoked without any arguments, &#39;asciiville&#39; will display an interactive menu</code></pre>
+<h4 id="usage-message-for-the-show_ascii_art-command">Usage message for
+the <code>show_ascii_art</code> command</h4>
+<pre><code>Usage: show_ascii_art [-a art[,art2,...]] [-A art_dir] [-b] [-B] [-c] [-C]
+    [-d font_dir] [-D seconds] [-e term] [-E] [-F large_font] [-f small_font]
+    [-g] [-i image] [-I input_dir] [-O output_dir] [-K fifo_name] [-l level]
+    [-L] [-n tabs] [-N depth] [-o] [-p palette] [-P] [-q] [-r] [-R len]
+    [-s show] [-S song] [-t first_text] [-T second_text]
+    [-h height] [-w width] [-W] [-v] [-z] [-Z] [-u]
+Where:
+    -a &#39;art&#39; specifies ascii art file(s) to display
+        multiple files are separated by a comma with no spaces
+        (e.g. &#39;-a Friends/tux,Doctorwhen/Capitola_Village_Vivid&#39;)
+        &#39;art&#39; can be the relative path to a file in:
+            /usr/share/asciiville/art
+        or the path to a file, with or without file extension
+    -A &#39;art_dir&#39; specifies the path to the ascii art folder
+    -b when generating ascii art use a border
+    -B use backup song when playing audio in slideshows
+    -c cycle slideshow endlessly (Ctrl-c to exit show)
+    -C center ascii art on screen if border detected
+    -d &#39;font_dir&#39; specifies the path to the figlet fonts
+    -D &#39;seconds&#39; specifies the delay, in seconds, between screens
+    -e &#39;term&#39; specifies the terminal in which execution occurs
+        &#39;term&#39; can be one of &#39;gnome&#39;, &#39;xfce4&#39;, or &#39;tilix&#39;
+    -E disables font size changing
+    -g convert image to grayscale
+    -i &#39;image&#39; specifies an image file to convert to ascii art
+    -I &#39;input_dir&#39; generates ascii art from all images in &#39;input_dir&#39;
+        and saves them in the directory specified with &#39;-O output_dir&#39;
+        (defaults to current directory if &#39;-O output_dir&#39; is specified)
+    -K &#39;fifo_name&#39; use a FIFO to communicate back to caller when done
+    -l &#39;level&#39; use lolcat coloring, &#39;level&#39; can be &#39;1&#39; or &#39;2&#39; (animate)
+    -L lists the ascii art in the &#39;art_dir&#39; and exits
+    -f &#39;small_font&#39; specifies the figlet font to use for small text
+    -F &#39;large_font&#39; specifies the figlet font to use for large text
+    -n &#39;tabs&#39; specifies the number of tabs to indent image display
+    -N &#39;depth&#39; specifies the color depth
+        &#39;depth&#39; can be &#39;4&#39; (for ANSI), &#39;8&#39; (for 256 color palette)
+        or &#39;24&#39; (for truecolor or 24-bit color)
+    -o indicates overwrite any existing ascii art when saving
+    -O &#39;output_dir&#39; generates ascii art from all images in the
+        directory specified with &#39;-I&#39; and saves them in &#39;output_dir&#39;
+    -P indicates play audio during slideshow
+    -p &#39;palette&#39; specifies which character set to use for ascii art
+        &#39;palette&#39; can be one of &#39;def&#39;, &#39;long&#39;, &#39;rev&#39;, &#39;longrev&#39;
+        &#39;def&#39; is the default set, &#39;long&#39; a long set,
+        &#39;rev&#39; reverses default, &#39;longrev&#39; reverses long
+        Any other argument to &#39;-p&#39; will be taken as the character set
+    -q don&#39;t display text, just the ascii art
+    -r indicates select random fonts
+    -R &#39;len&#39; indicates random slideshow of length &#39;len&#39; (0 &#39;len&#39; infinite show)
+    -s &#39;show&#39; slide show of ascii art
+        &#39;show&#39; can be:
+            &#39;Art&#39;, &#39;Doctorwhen&#39;, &#39;Dragonflies&#39;, &#39;Fractals&#39;, &#39;Friends&#39;, &#39;Iterated&#39;
+            &#39;Lyapunov&#39;, &#39;Nature&#39;, &#39;Owls&#39;, &#39;Space&#39;, &#39;Wallpapers&#39;, &#39;Waterfalls&#39;
+        or a custom folder name (with &#39;-A art_dir&#39;)
+    -S &#39;song&#39; use &#39;song&#39; as audio track
+    -t &#39;first_text&#39; specifies the first text to display
+    -T &#39;second_text&#39; specifies the second text to display
+    -u displays this usage message and exits
+    -h &#39;height&#39; specifies the height of the converted ascii art
+    -w &#39;width&#39; specifies the width of the converted ascii art
+        If only one of &#39;width&#39; and &#39;height&#39; is provided,
+        calculate the other from image aspect ratio
+    -W indicates do not wait for input to continue viewing ascii art
+    -v indicates view ascii art and prompt to continue
+    -Z indicates no ANSI escape sequences used in ascii art
+    -z indicates save converted image ascii art in art_dir</code></pre>
+<h4 id="usage-message-for-the-asciisplash-command">Usage message for the
+<code>asciisplash</code> command</h4>
+<pre><code>Usage: asciisplash [-A] [-a] [-b] [-C] [-c num] [-d] [-jJ] [-m] [-p] [-s song] [-u]
+Where:
+    -A indicates use all effects
+    -a indicates play audio during ASCIImatics display
+    -b indicates use backup audio during ASCIImatics display
+    -C indicates use alternate comments in Plasma effect
+    -c num specifies the number of times to cycle
+    -d indicates enable debug mode
+    -j indicates use Julia Set effect
+    -J indicates Julia Set with several runs using different parameters
+    -m indicates use Asciiville effect
+    -p indicates use Plasma effect
+    -s song specifies the audio file to play as accompaniment
+        &#39;song&#39; can be the full pathname to an audio file or a relative
+        pathname to an audio file in the MPD music library or
+        $HOME/Music/
+    -u displays this usage message and exits</code></pre>
+<h3 id="example-invocations">Example invocations</h3>
+<p>The <code>asciiville</code> command is intended to serve as the
+primary interface to invoke commands. The <code>asciiville</code>
+command utilizes several different terminal emulators and can also be
+used to invoke any specified command. Some example invocations of
+<code>asciiville</code> follow.</p>
+<p>Run <code>asciiville</code> in interactive menu mode:</p>
+<p><code>asciiville</code></p>
+<p>Display a random slideshow of 25 ascii art images selected from all
+galleries in the default terminal window</p>
+<p><code>asciiville -E 25</code></p>
+<p>Display a random slideshow of 30 ascii art images selected from the
+Vintage art gallery with a delay of 10 seconds between images in a Tilix
+terminal window</p>
+<p><code>asciiville -E 30 -V Vintage -D 10 -t</code></p>
+<p>Run <code>asciiville</code> in interactive mode with Ranger File
+Manager selected as command:</p>
+<p><code>asciiville -i -y</code></p>
+<p>Open the default client in fullscreen mode:</p>
+<p><code>asciiville -F</code></p>
+<p>Open the default client in fullscreen mode using the Tilix terminal
+emulator:</p>
+<p><code>asciiville -F -t</code></p>
+<p>Open the default client in the cool-retro-term terminal:</p>
+<p><code>asciiville -r</code></p>
+<p>Run <code>ranger</code> file manager in cool-retro-term terminal
+emulator:</p>
+<p><code>asciiville -r -y</code></p>
+<p>Run <code>mpcplus</code> music player in Tilix terminal emulator:</p>
+<p><code>asciiville -M -t</code></p>
+<p>Display a zoomable map of the world using <code>mapscii</code>:</p>
+<p><code>asciiville -c maps</code></p>
+<p>Display the Phase of the Moon using <code>wttr.in</code>:</p>
+<p><code>asciiville -c moon</code></p>
+<p>Run the <code>ddgr</code> command line web search in the current
+terminal window:</p>
+<p><code>asciiville -c search</code></p>
+<p>Run the <code>rainbowstream</code> command line Twitter client in the
+current terminal window:</p>
+<p><code>asciiville -c twitter</code></p>
+<p>Display a weather report for your IP address location using
+<code>wttr.in</code>:</p>
+<p><code>asciiville -c weather</code></p>
+<p>Run the <code>cmus</code> music player client in a gnome-terminal
+emulator window:</p>
+<p><code>asciiville -c cmus -g</code></p>
+<p>Run <code>neomutt</code> mail client in fullscreen mode in a tilix
+terminal emulator window:</p>
+<p><code>asciiville -f -t -z</code></p>
+<p>Run <code>lynx</code> web browser in a tmux session in an
+xfce4-terminal window:</p>
+<p><code>asciiville -l -T -x</code></p>
+<p>Creates an asciinema recording of <code>btop</code> system monitor in
+a tmux session:</p>
+<p><code>asciiville -R -T</code></p>
+<p>Run <code>asciisplash</code> displaying the Julia Set asciimatics
+animation with audio:</p>
+<p><code>asciiville -S -j -a</code></p>
+<h2 id="adding-an-ascii-art-gallery">Adding an ASCII Art Gallery</h2>
+<p>Asciiville includes several ASCII Art galleries produced by the
+renowned Ascii Artist, Doctorwhen. These galleries can be viewed by
+opening <code>asciiville</code> in interactive menu mode (execute
+<code>asciiville</code> with no arguments or the <code>-i</code>
+argument). From the main Asciiville menu select <em>Ascii Art</em> then
+select an Ascii Art slideshow to view from the list of slideshows
+available in the Asciiville Art menu.</p>
+<p>Additional ASCII Art galleries can be added to the Asciiville Art
+menu by creating and populating a directory in
+<code>/usr/share/asciiville/art/</code> with ASCII Art files. The
+convention in Asciiville is for ASCII Art filenames to end with the
+suffix <code>.asc</code> so generate or locate ASCII Art files, make
+sure the filenames end in <code>.asc</code>, and copy them to a new
+folder in <code>/usr/share/asciiville/art/</code>. The new ASCII Art
+gallery will show up in the menu listing the available ASCII Art
+slideshows the next time you run <code>asciiville</code>.</p>
+<h3 id="generating-ascii-art">Generating ASCII Art</h3>
+<p>Asciiville provides utilities and convenience menus for generating
+ASCII Art from existing images. The pre-existing images can be in any
+image format. To generate ASCII Art from a folder of images either use
+the <code>show_ascii_art</code> command or the interactive menu
+interface in <code>asciiville</code>:</p>
+<h4 id="using-show_ascii_art-to-generate-ascii-art">Using
+<code>show_ascii_art</code> to generate ASCII Art</h4>
+<p>The <code>show_ascii_art</code> command can be used to generate ASCII
+Art by supplying it with an input folder of existing images and a
+desired output folder to hold the generated ASCII Art files. To do so,
+invoke the command as follows:</p>
+<p><code>show_ascii_art -I &lt;input folder&gt; -O &lt;output folder&gt;</code></p>
+<p>For example, the command
+<code>show_ascii_art -I /u/pics/beach -O /u/pics/asciibeach</code> would
+convert all of the image files in the <code>/u/pics/beach</code> folder
+into ASCII Art files and store them in the
+<code>/u/pics/asciibeach</code> folder.</p>
+<p>Note that the quality of generated ASCII Art is quite sensitive to
+the font in use. The best quality can be achieved with a fixed width
+font and small font size. You can think of the font as your paint brush
+and its size as the size of the brush. Higher resolution ASCII Art is
+achieved with a finer brush. The "palette" used to create ASCII Art is a
+string of characters. A default palette is defined in Asciiville but
+alternate palettes can be selected with command line switches.</p>
+<p>If one of the terminal emulators that Asciiville is familiar with is
+used, the font and font size are set for you in a terminal profile or by
+command line arguments. The terminal emulators that Asciiville has
+integrated into its generation and viewing facilities are
+<em>gnome-terminal</em>, <em>tilix</em>, and <em>xfce4-terminal</em>.
+The currnt terminal window or console screen can also be used but in
+that case the font and font size will be whatever is already set.</p>
+<p>If you use the current terminal window to generate/view ASCII Art
+then you may wish to set the font to a fixed width font and size 10 or
+12. On the other hand, sometimes lower resolution ASCII Art is
+appealing. It's up to you.</p>
+<h4 id="using-asciiville-menus-to-generate-ascii-art">Using
+<code>asciiville</code> menus to generate ASCII Art</h4>
+<p>When the <code>asciiville</code> command is invoked in interactive
+menu mode the main menu contains an entry <em>Generate ASCII Art</em>.
+Selecting this menu entry will prompt the user to select an image input
+directory. Answering 'y' to the input directory prompt executed the
+Ranger file manager in directory selection mode. Use the arrow keys to
+browse folders, press <code>Enter</code> to enter a directory, and
+create a new directory with <code>:mkdir &lt;dirname&gt;</code>. While
+in the directory you wish to select, quit Ranger with 'q' and that
+directory will be selected as the image input directory. Do the same to
+select an ascii output directory.</p>
+<p>After selecting an image input directory and ascii art output
+directory the user will then be prompted to confirm the directory
+selections and generate ASCII Art. Answering 'y' at this prompt will
+generate ASCII Art files for each of the images in the image input
+directory and store them in the ascii art output directory.</p>
+<p>After using either of these methods to generate ASCII Art, follow the
+guide above to add the newly generated ASCII Art folder to the
+Asciiville ASCII Art galleries.</p>
+<h3 id="adding-and-viewing-art-galleries">Adding and Viewing Art
+Galleries</h3>
+<p>The Asciiville Wiki article "<a
+href="https://github.com/doctorfree/Asciiville/wiki/Adding-Art-Galleries">Adding
+and Viewing Art Galleries</a>" provides a brief tutorial introduction to
+generating a new ASCII Art gallery, customizing, and viewing it.</p>
+<p>Asciiville default galleries can be viewed using the interactive
+menus in the <code>asciiville</code> command. Select the <em>Ascii
+Art</em> entry from the main menu, select the options you prefer (e.g.
+preferred terminal emulator and audio), and select the ascii art gallery
+you wish to view.</p>
+<p>Note that the <code>cool-retro-term</code> terminal emulator will
+not, by default, display the full height of the ascii art included in
+Asciiville as the font size is too large. To view Asciiville Ascii Art
+slideshows using <code>cool-retro-term</code>, first reduce the font
+scaling in the settings menu to about 0.5. All the other terminal
+emulators supported by default in Asciiville
+(<code>gnome-terminal</code>, <code>tilix</code>, and
+<code>xfce4-terminal</code>) are dynamically configured during slideshow
+presentations to scale font sizes so ascii art is displayed
+correctly.</p>
+<p>Asciiville ascii art viewing utilities including slideshow display
+utilize intelligent and configurable font size changes to render ascii
+art in higher quality. Each Asciiville ascii art gallery can be
+configured with options to control some of these font size and display
+features. To configure a gallery, add or edit the file
+<code>/usr/share/asciiville/art/&lt;gallery&gt;/.config</code>. An
+example Asciiville gallery configuration file can be found in
+<code>/usr/share/asciiville/art/Vintage/.config</code>:</p>
+<pre><code>scale_art_font=2
+scale_txt_font=1
+set_font_size=1
+uses_ansi_escape=
+show_filename=</code></pre>
+<p>In this example, <code>scale_art_font=2</code> indicates double the
+font size used for ascii art display; <code>scale_txt_font=1</code>
+indicates no change to the text font size used for ascii art text
+display; <code>set_font_size=1</code> indicates make font size changes;
+<code>uses_ansi_escape=</code> indicates this gallery's ascii art does
+not utilize ANSI escape sequences to color its text; and
+<code>show_filename=</code> indicates do not display the ascii art
+filename.</p>
+<p>The default settings for Asciiville ascii art galleries is:</p>
+<pre><code>scale_art_font=1
+scale_txt_font=1
+set_font_size=1
+uses_ansi_escape=1
+show_filename=</code></pre>
+<p>To display a gallery's ascii art filename below the ascii art
+displayed, set <code>show_filename=1</code> in the gallery's
+<code>.config</code>. Any, none, or all settings may be present in a
+gallery's <code>.config</code>. If a setting is not present, Asciiville
+uses the defaults described above.</p>
+<h3 id="ascii-art-tools">ASCII Art Tools</h3>
+<p>The Asciiville Wiki article "<a
+href="https://github.com/doctorfree/Asciiville/wiki/Tools-Ascii-Art">ASCII
+Art Tools</a>" describes several tools not included in Asciiville that
+may be of use in drawing and painting ASCII Art</p>
+<h3 id="ascii-art-online">ASCII Art Online</h3>
+<p>There are many online galleries of ASCII Art. In addition to the
+newly minted extended ASCII Art galleries included in Asciiville, the
+Asciiville project also includes a rich set of vintage ASCII Art in the
+<code>Vintage</code> art gallery. The citizens of Asciiville have been
+diligent in their efforts to comply with the artists' licensing
+restrictions and only art that is freely redistributable is contained in
+Asciiville. Many of the online ASCII Art galleries available to the
+public are not as scrupulous with regards licensing requirements. In
+their defense, it can be extremely difficult to discover the origin and
+history of many of these works of art. Most were just culled from other
+archives who culled them from downloads of archives of defunct online
+bulletin boards and newsgroups and websites.</p>
+<p>The point being, we here in Asciiville cannot guarantee anything
+about the legal provinance of online ASCII Art galleries. We can only
+assure you that the art included in Asciiville has been vetted and
+complies with all licensing requirements. Note that much of the art
+included in Asciiville prohibits redistribution for commercial purposes
+(e.g. the art in the <code>Vintage</code> gallery). Others prohibit the
+use of hate speech in conjunction with the display of the artist's work.
+All of these requirements must be satisfied by Asciiville users, both
+those of us here in Asciiville and those who download and install our
+project.</p>
+<p>That being said, exploring the online ASCII Art galleries is fun and
+much of it can be legally downloaded, utilized however you want, and
+redistributed. To get started exploring the world of online ASCII Art,
+visit the following:</p>
+<ul>
+<li><a
+href="https://web.archive.org/web/20091026203414/http://www.geocities.com/spunk1111/indexjava.htm">Joan
+Stark's incredible archived website</a></li>
+<li><a href="https://asciiart.website/">Christopher Johnson's ASCII Art
+Collection</a></li>
+<li><a href="http://www.ascii-fr.com/">Dernières images d'art
+ascii</a></li>
+<li><a href="http://www.mondocolorado.org/vault/typo.html">Typo
+Gallery</a></li>
+<li><a href="https://www.asciiart.eu/">ASCII Art Archive</a></li>
+<li><a href="https://textart.io/art">Textart</a></li>
+<li><a href="http://www.windows93.net">Windows 93 on the Web</a>
+<ul>
+<li><a href="http://www.windows93.net/#!ascii">ASCII Art</a></li>
+<li><a href="http://www.windows93.net/#!ansi">ANSI Art</a></li>
+</ul></li>
+</ul>
+<h2 id="figlet-fonts">Figlet fonts</h2>
+<p>Asciiville installs many new Figlet Fonts in addition to those
+installed by the <code>pyfiglet</code> Python package. These fonts are
+used by the <code>asciimatics</code> Python package. To view a complete
+list of the installed <code>pyfiglet</code> fonts, run the command
+<code>pyfiglet -l</code>. To see an example rendering of each of the
+installed <code>pyfiglet</code> fonts including those installed by
+<code>Asciiville</code>, run the command
+<code>bash /usr/share/asciiville/tools/bin/show_figlet_fonts</code>.
+There are many fonts so you may wish to redirect the output of the
+<code>bash /usr/share/asciiville/tools/bin/show_figlet_fonts</code>
+command for use with an editor or pager:</p>
+<pre><code>bash /usr/share/asciiville/tools/bin/show_figlet_fonts &gt; figlet-fonts-examples.txt
+less figlet-fonts-examples.txt</code></pre>
+<p>For an example of how to use the Figlet Fonts in an asciimatics
+animation, see <code>/usr/bin/asciiart</code>.</p>
+<h2 id="build">Build</h2>
+<p>To compile and build a Debian or RPM format package on a Linux
+architecture for which a package is not provided, an appropriate
+development environment must be installed.</p>
+<p>On a Debian based system:</p>
+<pre class="console"><code>sudo apt update -y
+sudo apt upgrade -y
+sudo apt install build-essential coreutils git make tar zstd make g++ \
+    libssl-dev libncursesw5-dev gcc-10 g++-10 cpp-10
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100 \
+    --slave /usr/bin/g++ g++ /usr/bin/g++-10 \
+    --slave /usr/bin/gcov gcov /usr/bin/gcov-10</code></pre>
+<p>On an RPM based system:</p>
+<pre class="console"><code>sudo dnf update
+sudo dnf groupinstall &quot;Development Tools&quot; &quot;Development Libraries&quot;</code></pre>
+<p>Each platform may differ in package names, versions, and installation
+command. It may require some iterations of this process to get all
+required development packages installed.</p>
+<p>Once you have an appropriate development environment setup, retrieve
+the <code>Asciiville</code> source, compile the included utilities, and
+create an installation package:</p>
+<pre class="console"><code>git clone https://github.com/doctorfree/Asciiville
+cd Asciiville</code></pre>
+<p>On Debian based systems, run the command <code>./mkdeb</code> in the
+<code>Asciiville</code> directory.</p>
+<p>On RPM based systems, run the command <code>./mkrpm</code> in the
+<code>Asciiville</code> directory.</p>
+<p>A successful compilation and packaging will produce
+distribution/installation files in
+<code>./releases/&lt;version&gt;/</code>.</p>
+<h2 id="removal">Removal</h2>
+<p>On Debian based Linux systems where the Asciiville package was
+installed using the Asciiville Debian format package, remove the
+Asciiville package by executing the command:</p>
+<pre class="console"><code>    sudo apt remove asciiville</code></pre>
+<p>or</p>
+<pre class="console"><code>    sudo dpkg -r asciiville</code></pre>
+<p>On RPM based Linux systems where the Asciiville package was installed
+using the Asciiville RPM format package, remove the Asciiville package
+by executing the command:</p>
+<pre class="console"><code>    sudo dnf remove Asciiville</code></pre>
+<p>or</p>
+<pre class="console"><code>    sudo yum remove Asciiville</code></pre>
+<p>The Asciiville package can be removed by executing the "Uninstall"
+script in the Asciiville source directory:</p>
+<pre class="console"><code>    git clone https://github.com/doctorfree/Asciiville
+    cd Asciiville
+    ./Uninstall</code></pre>
+<p>On systems for which the manual installation was performed using the
+<code>Install-bin.sh</code> script, remove Asciiville manually by
+downloading the <code>Uninstall-bin.sh</code> script and, as a user with
+sudo privilege, execute the commands:</p>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 Uninstall-bin.sh</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> ./Uninstall-bin.sh</span></code></pre></div>
+<p>Note that manual removal of Asciiville using the
+<code>Uninstall-bin.sh</code> script will not remove any of the manually
+installed dependencies. Manual installation and removal of Asciiville is
+not as robust as packaged installation and removal. Hopefully additional
+platform packaging will be available in the future. If you would like to
+assist with this effort, see the <a href="#contributing">'Contributing'
+section</a> below.</p>
+<h2 id="what-is-ascii">What is ASCII</h2>
+<p>ASCII is an abbreviation for "American Standard Code for Information
+Interchange", a character encoding standard for electronic
+communication. ASCII codes represent text in computers,
+telecommunications equipment, and other devices. Most modern
+character-encoding schemes are based on ASCII, although they support
+many additional characters.</p>
+<p float="left">
+ASCII Code Chart<br/>
+  <img src="art/pics/USASCII_code_chart.png" style="width:1024px;height:737px;">
+</p>
+
+<p>ASCII was developed from telegraph code. Its first commercial use was
+as a seven-bit teleprinter code promoted by Bell data services.
+Originally based on the English alphabet, ASCII encodes 128 specified
+characters into seven-bit integers as shown by the ASCII chart above.
+The first edition of the standard was published in 1963.</p>
+<p>Extended ASCII (EASCII or high ASCII) character encodings are
+eight-bit or larger encodings that include the standard seven-bit ASCII
+characters, plus additional characters. There are many extended ASCII
+encodings.</p>
+<p>The phrase "ANSI character set" has no well-defined meaning and in
+the context of ANSI Art typically refers to "Code page 437", the
+character set of the original IBM PC. In Asciiville the phrase "ANSI
+Art" refers to ASCII Art that utilizes the extended ASCII character
+encoding with the ability to render colored text. The phrase "ASCII Art"
+encompasses all such character renderings, ASCII and extended ASCII.
+Whether it's "Art" is left as an exercise for the viewer.</p>
+<h3 id="ascii-art-history">ASCII Art History</h3>
+<p>The Asciiville Wiki article "<a
+href="https://github.com/doctorfree/Asciiville/wiki/Ascii-Art-History">ASCII
+Art History</a>" provides us with a brief history of the development of
+text based art over the millenia, concrete poetry to typewriter art to
+ASCII and ANSI art.</p>
+<p float="left">
+Typewriter art by Flora F.F. Stacey from 1898<br/>
+  <img src="art/pics/typewriter-art.jpg" style="width:600px;height:800px;">
+</p>
+
+<h2 id="videos">Videos</h2>
+<p>Introduction to Asciiville Video: <a
+href="https://www.youtube.com/watch?v=t5bfVqqDvI0"
+title="Asciiville Introduction"><img
+src="https://i.imgur.com/k7ZgRi4.png"
+alt="Asciiville Introduction" /></a></p>
+<p>Asciiville Art Slideshow Video: <a
+href="https://www.youtube.com/watch?v=HQPvfJGo4VA"
+title="Asciiville Art Slideshow"><img
+src="https://i.imgur.com/fZK70ZW.png"
+alt="Asciiville Art Slideshow" /></a></p>
+<p>Asciiville Space Slideshow Video: <a
+href="https://www.youtube.com/watch?v=DZV69SYLvc4"
+title="Asciiville Space Slideshow"><img
+src="https://i.imgur.com/TJomRY2.png"
+alt="Asciiville Space Slideshow" /></a></p>
+<p>Asciiville Retro Vintage Slideshow Video: <a
+href="https://www.youtube.com/watch?v=lDKJB8OOmaw"
+title="Asciiville Retro Vintage Slideshow"><img
+src="https://i.imgur.com/m0EaOXu.png"
+alt="Asciiville Retro Vintage Slideshow" /></a></p>
+<p>Asciiville Waterfalls Slideshow Video: <a
+href="https://www.youtube.com/watch?v=PdSI9YNBJ5A"
+title="Asciiville Waterfalls Slideshow"><img
+src="https://i.imgur.com/acxc5qH.png"
+alt="Asciiville Waterfalls Slideshow" /></a></p>
+<h2 id="screenshots">Screenshots</h2>
+<p float="left">
+Waterfall as Ascii Art generated and rendered with Asciiville<br/>
+  <img src="screenshots/Asciiville-Waterfall.png" style="width:1280px;height:720px;">
+</p>
+
+<p float="left">
+Asciiville Main Menu<br/>
+  <img src="screenshots/Asciiville-Welcome.png" style="width:800px;height:600px;">
+  <img src="screenshots/Asciiville-MainMenu.png" style="width:800px;height:600px;">
+</p>
+
+<p float="left">
+Asciiville Sub-Menus: Ascii Art, Asciimatics Animations, MusicPlayerPlus, and RoonCommandLine<br/>
+  <img src="screenshots/Asciiville-Art.png" style="width:800px;height:600px;">
+  <img src="screenshots/Asciiville-Animation.png" style="width:800px;height:600px;">
+  <img src="screenshots/Asciiville-Music.png" style="width:800px;height:600px;">
+  <img src="screenshots/Asciiville-Roon.png" style="width:800px;height:600px;">
+</p>
+
+<p float="left">
+Ascii System Monitor, Maps, and Weather<br/>
+  <img src="screenshots/Btop.png" style="width:800px;height:600px;">
+  <img src="screenshots/Mapscii-Ukraine.png" style="width:800px;height:600px;">
+  <img src="screenshots/Weather.png" style="width:800px;height:600px;">
+</p>
+
+<h2 id="contributing">Contributing</h2>
+<p>There are a variety of ways to contribute to the Asciiville project.
+All forms of contribution are appreciated and valuable. Also, it's fun
+to collaborate. Here are a few ways to contribute to the further
+improvement and evolution of Ascii Art, Animation, and Utilities:</p>
+<h3 id="testing-and-issue-reporting">Testing and Issue Reporting</h3>
+<p>Asciiville is fairly complex with many components, features, options,
+configurations, and use cases. Although currently only supported on
+Linux platforms, there are a plethora of Linux platforms on which
+Asciiville can be deployed. Testing all of the above is time consuming
+and tedious. If you have a Linux platform on which you can install
+Asciiville and you have the time and will to put it through its paces,
+then issue reports on problems you encounter would greatly help improve
+the robustness and quality of Asciiville. Open issue reports at <a
+href="https://github.com/doctorfree/Asciiville/issues"><a
+href="https://github.com/doctorfree/Asciiville/issues">https://github.com/doctorfree/Asciiville/issues</a></a></p>
+<h3 id="sponsor-asciiville">Sponsor Asciiville</h3>
+<p>Asciiville is completely free and open source software. All of the
+Asciiville components are freely licensed and may be copied, modified,
+and redistributed freely. Nobody gets paid, nobody is making any money,
+it's a project fully motivated by curiousity and love of art. However,
+it does take some money to procure development and testing resources.
+Right now Asciiville needs a multi-boot test platform to extend support
+to a wider variety of Linux platforms and potentially Mac OS X.</p>
+<p>If you have the means and you would like to sponsor Asciiville
+development, testing, platform support, and continued improvement then
+your monetary support could play a very critical role. A little bit goes
+a long way in Asciiville. For example, a bootable USB SSD device could
+serve as a means of porting and testing support for additional
+platforms. Or, a decent cup of coffee could be the difference between a
+bug filled release and a glorious artistic adventure.</p>
+<p>Sponsor the Asciiville project at <a
+href="https://github.com/sponsors/doctorfree"><a
+href="https://github.com/sponsors/doctorfree">https://github.com/sponsors/doctorfree</a></a></p>
+<h3 id="contribute-to-development">Contribute to Development</h3>
+<p>If you have programming skills and find Ascii text based art,
+animation, and utilities to be an interesting area, you can contribute
+to Asciiville development through the standard Github "fork, clone, pull
+request" process. There are many guides to contributing to Github hosted
+open source projects on the Internet. A good one is available at <a
+href="https://www.dataschool.io/how-to-contribute-on-github/"><a
+href="https://www.dataschool.io/how-to-contribute-on-github/">https://www.dataschool.io/how-to-contribute-on-github/</a></a>.
+Another short succinct guide is at <a
+href="https://gist.github.com/MarcDiethelm/7303312"><a
+href="https://gist.github.com/MarcDiethelm/7303312">https://gist.github.com/MarcDiethelm/7303312</a></a>.</p>
+<p>Once you have forked and cloned the Asciiville repository, it's time
+to setup a development environment. Although many of Asciiville's
+commands are Bash shell scripts, there are also text based applicatons
+and games written in C and C++ along with documentation in Markdown
+format, configuration files in a variety of formats, examples,
+screenshots, video demos, build scripts, packaging, and more.</p>
+<p>The development environment consists of several packages needed to
+build, package, and test Asciiville components. These include:</p>
+<p>coreutils, sed, git, build-essential, gcc, g++, make, uuid-dev,
+libboost-graph-dev, cmake, python3, jdk, flex, bison, libncurses5-dev,
+autotools-dev, libjpeg-dev, libpng-dev, libcurl4-gnutls-dev,
+libncurses5-dev, autoconf-archive, pkg-config</p>
+<p>Not all are required to build a specific utility or game. Utilities
+and games built from source in Asciiville include aewan, btop++, cbftp,
+ddgr, jp2a, nethack, ninvaders, and tetris.</p>
+<p>The build script <code>build</code> in the top-level directory of the
+Asciiville repository can be used to compile aewan, btop, cbftp, jp2a,
+nethack, ninvaders, and tetris. Invoke the <code>build</code> script
+with the game or utility you wish to compile as an argument. For
+example, to compile the btop++ system monitor from source, run the
+command <code>./build btop</code>.</p>
+<p>On Debian and RPM based systems the Asciiville installation package
+can be created with the <code>mkdeb</code> and <code>mkrpm</code>
+scripts. These scripts invoke the <code>build</code> script for each of
+the projects included with Asciiville, populate a distribution tree, and
+call the respective packaging utilities. Packages are saved in the
+<code>./releases/&lt;version&gt;/</code> folder. Once a package has been
+created it can be installed with the <code>Install</code> script.</p>
+<p>It's not necessary to have C/C++ expertise to contribute to
+Asciiville development. Many of the Asciiville commands are Bash scripts
+and require no compilaton. Script commands reside in the
+<code>bin</code> directory. To modify a shell script, install Asciiville
+and edit the <code>bin/&lt;script&gt;</code> you wish to improve. Simply
+copy the revised script to <code>/usr/bin</code> and test your changes.
+Modifying the configuration files is a little more tricky. Configuration
+files generally live in the <code>conf</code> directory but each has its
+own installation location and some are modified by the
+<code>ascinit</code> command during installation. If you are just
+modifying the shell scripts or configuration files then you don't need
+to worry about the extensive list of dependencies listed above.</p>
+<p>Feel free to email me at <a
+href="mailto:github@ronrecord.com">github@ronrecord.com</a> with
+questions or comments.</p>
